@@ -59,3 +59,38 @@ void deleteAfter(listElement* after){
   free(delete->data);
   free(delete);
 }
+int length(listElement* start){
+	int numElements = 0;
+  listElement* current = start;
+  while(current != NULL){
+    numElements++;
+    current = current->next;
+  }
+  return numElements;
+}
+/*
+void push(listElement** list, char* data, size_t size){
+	
+
+listElement* newEl1 = insertAfter(list, data, size);
+
+listElement* temp;
+list->next=newEl1.next;
+newEl1->next=list;
+		
+} */
+void push(listElement** list, char* data, size_t size) {
+	listElement* head = size;
+	listElement* ele = createEl(data, size);
+	ele->next = *list;
+*list = ele;
+}
+
+listElement* pop(listElement** list) {
+	listElement* ele = *list;
+	*list = (*list)->next;
+	ele->next = NULL;
+	return ele;
+}
+	
+	
